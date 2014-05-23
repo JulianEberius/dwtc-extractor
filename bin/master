@@ -1,0 +1,4 @@
+ #!/bin/bash
+JAR=`ls target/dwtc-extractor-*-jar-with-dependencies.jar`
+
+exec java -cp $JAR org.fuberlin.wbsg.ccrdf.Master "$@"
