@@ -1,6 +1,6 @@
 ## DWTC-Extractor: A Web Table Extractor for the Common Crawl
 
-This is the complete extractor thas was used to create the [Dresden Web Table Corpus](http://wwwdb.inf.tu-dresden.de/misc/edyra/dwtc)1
+This is the complete extractor thas was used to create the [Dresden Web Table Corpus](http://wwwdb.inf.tu-dresden.de/misc/dwtc).
 
 *NOTE*: This is partially based on code that was originally released as part of the [Web Data Commons project](http://webdatacommons.org/). The original repository is found [here](https://www.assembla.com/code/commondata/subversion/nodes/3/Extractor/trunk/extractor).
 <!-- It was modified for the extraction of the Dresden Web Table Corpus by Julian Eberius of the Database Technology Group at TU Dresden. -->
