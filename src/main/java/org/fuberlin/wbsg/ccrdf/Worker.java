@@ -35,7 +35,7 @@ import org.jwat.warc.WarcReaderFactory;
 import org.jwat.warc.WarcRecord;
 
 import webreduce.datastructures.DocumentMetadata;
-import webreduce.datastructures.Dataset;
+import webreduce.data.Dataset;
 import webreduce.extraction.ExtractionAlgorithm;
 import webreduce.extraction.StatsKeeper.WebdataStats;
 

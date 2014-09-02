@@ -17,7 +17,7 @@ import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
 
 import webreduce.datastructures.DocumentMetadata;
-import webreduce.datastructures.Dataset;
+import webreduce.data.Dataset;
 import webreduce.terms.LuceneNormalizer;
 
 import com.google.common.base.CharMatcher;
