@@ -1,4 +1,4 @@
-package webreduce.datastructures;
+package webreduce.extraction;
 
 /* Intermediate product of the extraction process */
 public class DocumentMetadata {

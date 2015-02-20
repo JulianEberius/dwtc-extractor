@@ -53,7 +53,7 @@ This is done by running
         bin/master queue -f 2013segments
 
 
-4.  Use 'start' command to launch EC2 extraction instances from the spot market. This request will keep starting instances until it is cancelled, so beware! Also, the price limit has to be given. The current spot prices can be found at http://aws.amazon.com/ec2/spot-instances/#6 . A general recommendation is to set this price at about the on-demand instance price. This way, we will benefit from the generally low spot prices without our extraction process being permanently killed. The price limit is given in US$.
+4.  Use 'start' commandto launch EC2 extraction instances from the spot market. This request will keep starting instances until it is cancelled, so beware! Also, the price limit has to be given. The current spot prices can be found at http://aws.amazon.com/ec2/spot-instances/#6 . A general recommendation is to set this price at about the on-demand instance price. This way, we will benefit from the generally low spot prices without our extraction process being permanently killed. The price limit is given in US$.
 
         ./bin/master start --worker-amount 10 --pricelimit 0.6
 

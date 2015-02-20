@@ -5,11 +5,15 @@ import java.util.Map;
 
 /* Abstract interface for collecting stats during the extraction process. 
  * Used to be implemented with Hadoop Counters, current implementation just uses
- * a HashMap which is later written to 
+ * a HashMap which is later written to Amazon SimpleDB.
  */
 public abstract class StatsKeeper {
 
-	public static class WebdataStats extends StatsKeeper {
+	public abstract void incCounter(Enum<?> counter);
+	public abstract Map<String,Integer> statsAsMap();
+	public abstract void reportProgress();
+	
+	public static class HashMapStats extends StatsKeeper {
 		protected HashMap<String, Integer> counters = new HashMap<String, Integer>();
 
 		@Override
@@ -56,9 +60,4 @@ public abstract class StatsKeeper {
 		}
 
 	}
-
-
-	public abstract void incCounter(Enum<?> counter);
-	public abstract Map<String,Integer> statsAsMap();
-	public abstract void reportProgress();
 }

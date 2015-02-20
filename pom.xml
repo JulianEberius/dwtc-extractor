@@ -165,20 +165,30 @@
 		</dependency>
 		<!-- lucene -->
 		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-core</artifactId>
-			<version>4.5.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-analyzers-common</artifactId>
-			<version>4.5.1</version>
-		</dependency>
-		<dependency>
 			<groupId>de.tu-dresden.inf.wwwdb</groupId>
 			<artifactId>dwtc-tools</artifactId>
-			<version>1.0.0</version>
+			<version>1.1.0</version>
 		</dependency>
+		<dependency>
+	        <groupId>com.sun.jna</groupId>
+	        <artifactId>jna</artifactId>
+	        <version>3.0.9</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>nz.ac.waikato.cms.weka</groupId>
+	        <artifactId>weka-stable</artifactId>
+	        <version>3.6.11</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>com.google.inject</groupId>
+	    	<artifactId>guice</artifactId>
+	    	<version>3.0</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>org.apache.lucene</groupId>
+	    	<artifactId>lucene-analyzers-common</artifactId>
+	    	<version>4.10.2</version>
+	    </dependency>
 	</dependencies>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 </project>

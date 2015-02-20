@@ -34,15 +34,17 @@ import org.jwat.warc.WarcReader;
 import org.jwat.warc.WarcReaderFactory;
 import org.jwat.warc.WarcRecord;
 
-import webreduce.datastructures.DocumentMetadata;
 import webreduce.data.Dataset;
+import webreduce.extraction.DocumentMetadata;
 import webreduce.extraction.ExtractionAlgorithm;
-import webreduce.extraction.StatsKeeper.WebdataStats;
+import webreduce.extraction.TableExtractionModule;
 
 import com.amazonaws.services.sqs.model.DeleteMessageRequest;
 import com.amazonaws.services.sqs.model.Message;
 import com.amazonaws.services.sqs.model.ReceiveMessageRequest;
 import com.amazonaws.services.sqs.model.ReceiveMessageResult;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 /**
  * Worker node implementation, connects to queue, takes file name to process,
@@ -56,6 +58,7 @@ public class Worker extends ProcessingNode {
 	protected final String dataBucket = getOrCry("dataBucket");
 	protected final String resultBucket = getOrCry("resultBucket");
 	private final int retryLimit = Integer.parseInt(getOrCry("jobRetryLimit"));
+	private static Injector injector = Guice.createInjector(new TableExtractionModule());
 
 	private StatHandler dataStatHandler = null;
 	private StatHandler errorStatHandler = null;
@@ -74,7 +77,7 @@ public class Worker extends ProcessingNode {
 			this.url = url;
 		}
 	}
-
+	
 	public static class WorkerThread extends Thread {
 		private static final String WARC_TARGET_URI = "WARC-Target-URI";
 		private Timer timer = new Timer();
@@ -84,6 +87,7 @@ public class Worker extends ProcessingNode {
 		}
 
 		public WorkerThread(int timeLimitMsec) {
+			this();
 			this.timeLimit = timeLimitMsec;
 		}
 
@@ -179,9 +183,7 @@ public class Worker extends ProcessingNode {
 					long pagesErrors = 0;
 					long start = System.currentTimeMillis();
 
-					WebdataStats extractionStats = new WebdataStats();
-					ExtractionAlgorithm ea = new ExtractionAlgorithm(
-							extractionStats, true);
+					ExtractionAlgorithm ea = injector.getInstance(ExtractionAlgorithm.class);
 
 					// read all entries in the ARC file
 					RecordWithOffsetsAndURL item;
@@ -234,7 +236,7 @@ public class Worker extends ProcessingNode {
 
 					// create data file statistics
 					Map<String, String> dataStats = new HashMap<String, String>();
-					for (Map.Entry<String, Integer> entry : extractionStats
+					for (Map.Entry<String, Integer> entry : ea.getStatsKeeper()
 							.statsAsMap().entrySet()) {
 						dataStats.put(entry.getKey(),
 								String.valueOf(entry.getValue()));
